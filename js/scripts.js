@@ -6,13 +6,13 @@ $(document).ready(function()
 	});
 });
 
-/*
+
 //enviar formulario de cadastro
 $(document).ready(function()
 {
 	$("#bt_cadastrar").click(function()
 	{
-		alert("carregou");
+		//alert("carregou");
 		
 		var nome = $("#nome_usuario").val().trim();
 		var email = $("#email_usuario").val().trim();
@@ -31,8 +31,12 @@ $(document).ready(function()
 			{
 				if(data.status == 'success')
 				{
-     					alert("cadastro concluido");
-					window.location='login.php';
+     					 //alert("cadastro concluido");
+					 //$('.message a').click(function(){
+        				        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+                				//alert("teste");
+        				//});
+					//window.location='login.php';
     				}
 				else if(data.status == 'error')
 				{
@@ -134,4 +138,3 @@ $(document).ready(function()
 		});
 	});
 });
-*/
