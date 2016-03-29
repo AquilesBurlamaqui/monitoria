@@ -22,17 +22,17 @@
 		<div class="login-page">
 			<div class="form">
 				<form class="register-form" method="post">
-					<input type="text" placeholder="nome"/>
-					<input type="text" placeholder="email"/>
-					<input id="" type="password" placeholder="senha"/>
+					<input type="text" id="nome_usuario" placeholder="nome"/>
+					<input type="text" id="email_usuario" placeholder="email"/>
+					<input id="senha_usuario" type="password" placeholder="senha"/>
 					<!--<input type="button" id="bt_cadastrar" name="filter" value="Filter" />-->      
-					<button>CRIAR</button>
+					<button type="button" id="bt_cadastrar">CRIAR</button>
       					<p class="message">Já possui cadastro? <a href="#">Entrar</a></p>
    				 </form>
     				<form class="login-form" method="post">
       					<input id="email_login" type="text" placeholder="usuario"/>
       					<input id="senha_login" type="password" placeholder="senha"/>
-					<button>LOGIN</button>
+					<button type="button" id="bt_login">LOGIN</button>
 					<p class="message">Nao possui cadastro? <a href="#">Criar uma conta</a></p>
     				</form>
   			</div>
