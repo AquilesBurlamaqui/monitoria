@@ -1,0 +1,79 @@
+body{
+	font-style:normal;
+	color:black;
+	/* background-image: url("http://i.stack.imgur.com/IehB7.png");
+	background-repeat: repeat;
+	background-attachment: scroll; */
+}
+
+.navbar-right{
+	margin-right:5%;
+}
+
+.container{
+	padding-right: 24%;
+	margin-top: 3%;
+	margin-left: 2%;
+
+}
+
+.jumbotron{
+	/*margin-right: 1%;
+	margin-left: 1%;*/
+	margin-top: 5%;
+}
+
+.panel-signup{
+	margin-right: 1%;
+	margin-left: 60%;
+}
+
+.panel-title-signup{
+	text-align: center;
+}
+
+.panel-body-signup{
+	margin-top: 2%;
+}
+
+.tittleBody{
+	margin-top: 10%;
+}
+
+/*.signup{
+	margin-left: 65%;
+}
+
+.typetextsignup{
+	text-align: center;
+}
+
+.buttonsignup{
+	margin-left: 83%;
+}
+
+.panel-default{
+	width:400px;
+	height:230px;
+	margin-top: 15%;
+    margin-left: 40%;
+}
+
+.panel-heading{
+	text-align:center;
+	height:50px;
+}
+
+.panel-body{
+	text-align:justify;
+}
+
+.redirecionar{
+	font-style:italic;
+	color:blue;
+}
+
+.logincab{
+	text-align:center;
+}*/
+
