@@ -1,3 +1,12 @@
+$(document).ready(function()
+{
+	$('.message a').click(function(){
+		$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+		//alert("teste");
+	});
+});
+
+/*
 //enviar formulario de cadastro
 $(document).ready(function()
 {
@@ -125,3 +134,4 @@ $(document).ready(function()
 		});
 	});
 });
+*/
