@@ -1,0 +1,43 @@
+<?php
+$no_need_login = true;
+$no_visible_elements = true;
+include_once ("header.php");
+
+if (Dbcommand::get("logout") == 1) {
+    session_start();
+    unset($_SESSION['usuario_logado']);
+    session_destroy();
+    header("Location: login.php");
+}
+
+if (@$_POST) {
+    header("Location: login.php?msg=" . $user->login());
+}
+?>
+    <!-- Login -->
+        <div class="container">
+            <div class="login row">
+                <div class="col-md-4 formulario well">
+                    <img src="<?php echo $company->album->photo[0]->url; ?>" alt="<?php echo $company->getName(); ?>" /><br/>
+                    <?php echo Message::get(); ?>
+
+                    <form action="login.php" method="post">
+                        <fieldset>
+                            <div>
+                                <input type='text' id='username' name='username_user' value='' class="form-control" placeholder="Login" required/>
+                            </div>
+                            <div>
+                                <input type='password' id='password' name='password_user' value='' class="form-control" placeholder="Senha" required/>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn-login" >Login</button>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-4 formulario">
+                   <a href="<?php echo "http://".$_SERVER['HTTP_HOST']; ?>" title="Você está perdido?">&larr; Voltar para <?php echo $company->getName(); ?></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
