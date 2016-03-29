@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>A Monitoria</title>
+<meta charset="UTF-8">
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>Monitoria</p>
+<h1>Esta � a página do nosso sistema de monitoria</h1>
+<p>A Monitoria interliga monitores e alunos em busca de soluções para problemas</p>
 
 </body>
 </html> 
