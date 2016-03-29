@@ -1,0 +1,63 @@
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
+.welcomeText {
+    font-size: x-large;
+}
+
+.styledText {
+    font-family: "Book Antiqua", Palatino, serif;
+}
+
+#home {
+    padding: 1rem;
+}
+
+textarea {
+   resize: none;
+}
+
+.homeFooter {
+    width: 100%;
+    color: white;
+    background-color: #3B3B3B;
+    padding: 1rem;
+
+}
+
+.copyrightContainer {
+    padding-right: 1rem;
+}
+
+.textCentered {
+    text-align: -webkit-center;
+}
+
+#linkToRegister {
+    width: 100%; 
+    text-align: -webkit-center; 
+    display: inherit; 
+    padding-bottom: 1rem;
+}
+
+#thinkingArea {
+    height: 75px; 
+    width: 100%; 
+    padding-top: 1rem;
+}
+
+.thought {
+    width: 100%;
+    border-top: 1px dashed #999999;
+    padding: 1rem;
+}
+
+.thinkingText {
+    padding: 0rem 0.5rem 0.2rem;
+    font-size: initial;
+}

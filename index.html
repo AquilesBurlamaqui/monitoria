@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="third-party/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+<body>
+    <!-- Login Div -->
+    <div id="loginContent" class="centered">
+        <form id="loginForm" action="login.php" method="post">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" name="loginEmail" class="form-control" id="loginEmail" placeholder="example@domain.com">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" name="loginPassword" class="form-control" id="loginPassword" placeholder="**********">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="seePass"> See Password
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default" style="width:100%;">Submit</button>
+            <a id="linkToRegister" href="#register">New User? Register now!</a>
+        </form>
+        <div class="textCentered alert alert-danger" role="alert" id="loginAlert" style="padding:0.5rem;">Invalid user and/or password!</div>
+    </div>
+    <!-- End of Login Div -->
+
+    <!-- Regiter Div -->
+    <div id="registerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="registrationTitle">Registration</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="registerModalContent" action="register.php" method="post">
+                        <div class="form-group" id="nameGroup">
+                            <label id="registerNameLabel" for="registerName">Name</label>
+                            <input type="text" name="registerName" class="form-control" id="registerName" placeholder="YourName">
+                        </div>
+                        <div class="form-group" id="emailGroup">
+                            <label for="registerEmail">Email</label>
+                            <input type="email" name="registerEmail" class="form-control" id="registerEmail" placeholder="example@domain.com">
+                        </div>
+                        <div class="form-group" id="passwordGroup">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" name="registerPassword" class="form-control" id="registerPassword" placeholder="**********">
+                        </div>
+                        <div class="form-group" id="confirmPasswordGroup">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" name="registerConfirmPassword" class="form-control" id="confirmPassword" placeholder="**********">
+                        </div>
+                        <div class="form-group" id="countryGroup">
+                            <label for="registerCountry">Country</label>
+                            <select name="registerCountry" class="form-control" id="registerCountry"></select>
+                        </div>
+                        <div class="form-group" id="stateGroup">
+                            <label for="registerState">State</label>
+                            <select name="registerState" class="form-control" id="registerState"></select>
+                        </div>
+                        <div class="form-group" id="aboutGroup">
+                            <label for="registerAbout">About</label>
+                            <textarea style="height: 150px;" maxlength="500" name="registerAbout" class="form-control" id="registerAbout"></textarea>
+                        </div>
+                        <div class="modal-footer" style="padding-bottom:0px;">
+                            <button type="submit" class="btn btn-primary" id="registerBtn">Register!</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- End of Regiter Div -->
+
+    <!-- Home Page Content-->
+    <div id="homeContent" style="padding-top: 1rem;">
+        <!-- Main Page Content -->
+        <!-- Nav Tabs -->
+        <ul id="contentTabs" class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="fa fa-home"></span>  Home</a></li>
+        </ul>
+        <!-- End of Nav Tabs -->
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home Content -->
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <table style="width: 100%;" class="styledText">
+                    <tr>
+                        <td style="display: inline-block;">
+                            <div class="welcomeText" id="welcomeDiv"> </div>
+                        </td>
+                        <td style="display: inline-block; padding-left: 1rem;">
+                            <a href="#edit" class="fa fa-pencil" id="editProfile"></a>
+                        </td>
+                        <td align="right">
+                            <a href="#logout" class="fa fa-power-off" id="logOut"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="fromDiv"> </div>
+                        </td>
+                        <td align="right">
+                            <a href="#deleteAccount" class="fa fa-trash" id="deleteAcc"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="aboutDiv"> </div>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <form id="thinkingForm">
+                    <div class="form-group">
+                        <label for="thinkingArea">What are you thinking?</label>
+                        <textarea maxlength="160" name="thinkingArea" class="form-control" id="thinkingArea"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-default" id="publishBtn"> Publish!</button>
+                </form>
+                
+                <br/>
+                <div id="thinkingsList"></div>
+            </div>
+            <!-- End of Home Content -->
+        </div>
+        <!-- End of Tab Panes -->
+        <!-- Footer navbar navbar-inverse navbar-fixed-bottom-->
+        <table class="homeFooter navbar-fixed-bottom">
+            <tr>
+                <td align="right" class="copyrightContainer">© 2016 RQueiroz</td>
+            </tr>
+        </table>
+        <!-- End of Footer -->
+        <!-- End of Main Page's Content --> 
+
+        <!-- Alert Pop Up -->
+        <!-- Modal -->
+        <div id="alertModal" class="modal fade" tabindex="-1" role="dialog">
+            <!-- Modal Dialog -->
+            <div class="modal-dialog"> 
+                <!-- Modal Content -->
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <h4 class="modal-title" id="alertTitle"> </h4> <!-- Modal Title -->
+                    </div>
+                    <div class="modal-body" id="alertModalContent">
+                        <p id="alertBody"> </p> <!-- Modal Body Text -->
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Modal confirm button -->
+                        <button type="button" id="confirmAlertBtn">
+                            <!-- Text will be inserted here -->
+                        </button>
+                        <!-- Modal cancel button -->
+                        <button type="button" data-dismiss="modal" id="closeAlertBtn">
+                            <!-- Text will be inserted here -->
+                        </button>
+                    </div>
+                </div>
+                <!-- End of Modal Content -->
+            </div>
+            <!-- End of Modal Dialog -->
+        </div>
+        <!-- End of Modal Modal -->
+        <!-- End of Alert Pop Up -->
+    </div>
+    <!-- End of Main Page Content -->
+    <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+    <script src="third-party/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/countries.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

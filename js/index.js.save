@@ -1,0 +1,121 @@
+var app = "";
+var loginPage = "";
+var registerDialog = "";
+
+sap.ui.getCore().attachInit(function () {
+    try {
+        app = new sap.m.App();
+        registerDialog = new sap.m.Dialog({
+            title: "Registre-se",
+            content: [
+                new sap.m.VBox("registrarionContainer", {
+                    items: [
+                        new sap.m.Input("nameRegister", {
+                            placeholder: "Usuario",
+                            value: "",
+                            type: "Text"
+                        }),
+                        new sap.m.Input("emailRegister", {
+                            placeholder: "Email",
+                            value: "",
+                            type: "Email"
+                        }),
+                        new sap.m.Input("pwordRegister", {
+                            placeholder: "Senha",
+                            value: "",
+                            type: "Password"
+                        })
+                    ]
+                })
+            ],
+            buttons: [
+                new sap.m.Button({
+                    text: "Pronto!",
+                    press: function () {
+                        registerDialog.close();
+                    }
+                }),
+                new sap.m.Button({
+                    text: "Cancelar",
+                    press: function () {
+                        registerDialog.close();
+                    }
+                })
+            ]
+        });
+
+        loginPage = new sap.m.Page("loginPage", {
+            title: "LOGIN",
+            content: [
+                new sap.m.VBox("loginContainer", {
+                    items: [
+                        new sap.m.Label({
+                            text: "Email"
+                        }),
+                        new sap.m.Input("uname", {
+                            value: "",
+                            type: "Text",
+                            width: "200px"
+                        }),
+                        new sap.m.Label({
+                            text: "Senha"
+                        }),
+                        new sap.m.Input("pword", {
+                            value: "",
+                            type: "Password",
+                            width: "200px"
+                        }),
+                        new sap.m.CheckBox("seePass", {
+                            text: "Mostrar Senha",
+                            select: function (evt) {
+                                try {
+                                    var checkBox = evt.getSource();
+                                    var pwordInput = sap.ui.getCore().byId("pword");
+                                    if (checkBox.getSelected() === true) {
+                                        pwordInput.setType("Text");
+                                    } else {
+                                        pwordInput.setType("Password");
+                                    }
+                                } catch (e) { alert(e); }
+                            }
+                        }),
+                        new sap.m.Button("loginBtn", {
+                            text: "Login",
+                            icon: "sap-icon://log",
+                            width: "100%",
+                            press: function () {
+                                var oModel = new sap.ui.model.json.JSONModel();
+				oModel.loadData("");
+                            }
+                        }),
+                        new sap.m.Link({
+                            text: "Cadastre-se agora",
+                            press: function () {
+                                registerDialog.open();
+                            }
+                        })
+                    ]
+                })
+            ]
+        });
+
+        /*
+        <Label id="lblUsername"  text="Username" />
+                <Input id="uname" value="" type="Text" width="200px"/>
+                <Label id="lblPassword" text="Password" />
+                <Input id="pword" value="" type="Password" width="200px" />
+                <CheckBox text="Show password" id="seePass" selected="false" select="showPassword" />
+                <Button id="loginBtn" text="Login" press="login" icon="sap-icon://log" width="100%" />
+                    */
+        /*
+        sap.ui.localResources("Pages.Login");
+        loginPage = new sap.ui.view("loginPage", {
+            viewName: "Pages.Login.Login",
+            type: sap.ui.core.mvc.ViewType.XML
+        });
+        */
+        app.addPage(loginPage);
+        app.placeAt("content"); 
+        sap.ui.getCore().byId("loginContainer").addStyleClass("centerLogin");
+    } catch (e) { alert(e);}
+});
