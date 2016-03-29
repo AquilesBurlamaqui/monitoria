@@ -1,0 +1,38 @@
+body{
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size:cover;
+}
+
+button.buttonPesquisa{
+	border-radius: 50%;
+}
+
+a [target=_blank]{
+}
+
+tr.universidades{
+	visibility: collapse;
+}
+
+#b01{
+	background-image: url("img/code.jpg");
+}
+
+#fieldSites{
+	text-align:center;
+	border: 2px;
+	color: black;
+    border-color:black;
+    border-style: solid;
+}
+
+fieldset.cadastro{
+	text-align:right;
+	padding-right: 5.75em;
+	margin-left: 400px;   
+	margin-right: 400px;
+	border: 4px;
+    border-color:white;
+    border-style: solid;
+}
