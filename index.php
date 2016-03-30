@@ -1,3 +1,16 @@
+<?php
+        session_start();
+        //verifica se tem algum usuario logado
+        if(!isset($_SESSION['login']) || !isset($_SESSION['senha']))
+        {
+		//header("Location: login.php");
+		echo("nao logado");
+	}
+	else
+	{
+		echo("logado");
+        }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -33,7 +46,7 @@
       					<input id="email_login" type="text" placeholder="usuario"/>
       					<input id="senha_login" type="password" placeholder="senha"/>
 					<button type="button" id="bt_login">LOGIN</button>
-					<p class="message">Nao possui cadastro? <a href="#">Criar uma conta</a></p>
+					<p class="message">Nao possui cadastro? <a href="#">Crie uma conta</a></p>
     				</form>
   			</div>
 		</div>

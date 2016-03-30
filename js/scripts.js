@@ -31,12 +31,11 @@ $(document).ready(function()
 			{
 				if(data.status == 'success')
 				{
-     					 //alert("cadastro concluido");
-					 //$('.message a').click(function(){
-        				        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-                				//alert("teste");
-        				//});
-					//window.location='login.php';
+     					//$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+					alert("teste");
+					$("#nome_usuario").text(" ");
+        			        $("#email_usuario").text(" ");
+	                		$("#senha_usuario").text(" ");
     				}
 				else if(data.status == 'error')
 				{
