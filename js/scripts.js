@@ -1,19 +1,51 @@
+/*=============================================================================*/
+
 $(document).ready(function()
 {
 	$('.message a').click(function(){
 		$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-		//alert("teste");
 	});
 });
 
+/*=============================================================================*/
+
+$(document).ready(function() {
+	$("#formulario_cadastro").validate({
+		rules:{
+			nome_usuario:{
+        			required: true, minlength: 2
+    	  		},
+			email_usuario:{
+				required: true, email: true
+      			},
+      			senha_usuario:{
+				required: true, minlength: 2
+      			}
+   	 	},
+   		messages:{
+			nome_usuario:{
+       		 		required: "O campo nome é obrigatório"
+      			},
+			email_usuario: {
+        			required: "O campo email é obrigatório.",
+         			email_usuario: "Digite um email válido."
+        		},
+      		  	senha_usuario: {
+                		required: "O campo senha é obrigatório."
+       		 	}
+		}
+	});
+});
+
+/*=============================================================================*/
 
 //enviar formulario de cadastro
 $(document).ready(function()
 {
 	$("#bt_cadastrar").click(function()
 	{
-		//alert("carregou");
-		
+		if( $("#formulario_cadastro").valid() )
+		{
 		var nome = $("#nome_usuario").val().trim();
 		var email = $("#email_usuario").val().trim();
 		var senha = $("#senha_usuario").val().trim();
@@ -31,15 +63,16 @@ $(document).ready(function()
 			{
 				if(data.status == 'success')
 				{
-     					//$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-					alert("teste");
-					$("#nome_usuario").text(" ");
-        			        $("#email_usuario").text(" ");
-	                		$("#senha_usuario").text(" ");
+     					$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+					$('#nome_usuario').val('');
+	                		$('#email_usuario').val('');
+	                		$('#senha_usuario').val('');
+					$("#email_login").val(email);
+					$("#senha_login").val(senha);
     				}
 				else if(data.status == 'error')
 				{
-        				alert("deu ruim! usuario noa inserido");
+        				alert("usuario não inserido");
    		 		}	
 			}, 
 			error: function(x, e)
@@ -78,13 +111,16 @@ $(document).ready(function()
 			{
             			alert('Uups! Ocorreu algum erro!');
         		}
-
     		}).fail(function(xhr, desc, err) {
         	        alert('Uups! Ocorreu algum erro!');
 			alert(data);
 		});
+		}
 	});
 });
+
+
+/*=============================================================================*/
 
 //validar login
 $(document).ready(function()
@@ -137,3 +173,5 @@ $(document).ready(function()
 		});
 	});
 });
+
+/*=============================================================================*/
