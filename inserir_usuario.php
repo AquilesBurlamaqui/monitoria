@@ -19,6 +19,7 @@
 	{
 		$sql = "UPDATE tb_usuario_jailsonbw SET nome='" . $nome . "', email='" . $email . "', password='" . $senha . "' WHERE codigo_usuario=" . $_SESSION['codigo_usuario'] . ";";
 		pg_query($conexao->abrirConexao(), $sql);
+		$_SESSION['nome'] = $nome;
 	}
 
 	$conexao->fecharConexao();

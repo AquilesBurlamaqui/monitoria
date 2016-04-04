@@ -34,18 +34,16 @@
         <body>
 		<div class="login-page">
                         <div class="form">
-                                <form class="login-form" method="post">
-                                        <p align="right"><a href="#" id="sair">Sair</a></p>
-					<p align="right"><a href="#" id="editar_perfil">#editarPerfil</a></p>
-					<?php echo("<p id='nome_sessao'>Olá, <b>" . $_SESSION['nome'] . "</b></p>"); ?>
-					<form class="register-form" method="post" id="formulario_atualizacao">
-						<input id="nome_login_atualizar" hidden  type="text" <?php echo("placeholder=" . $row["nome"]); ?> />
-						<input id="email_login_atualizar" hidden  type="text" <?php echo("placeholder=" . $row["email"]); ?> />
-                                        	<input id="senha_login_atualizar" hidden type="password" placeholder="senha"/>
+				<p align="right"><a href="#" id="sair">Sair</a></p>
+				<p align="right"><a href="#" id="editar_perfil">#editarPerfil</a></p>
+				<?php echo("<p id='nome_sessao'>Olá, <b>" . $_SESSION['nome'] . "</b></p>"); ?>
+				<form class="login-form" method="post" id="formulario_atualizacao">
+						<input id="nome_login_atualizar" name="nome_login_atualizar" hidden  type="text" <?php echo("placeholder=" . $row["nome"]); ?> />
+						<input id="email_login_atualizar" name="email_login_atualizar" hidden  type="text" <?php echo("placeholder=" . $row["email"]); ?> />
+                                        	<input id="senha_login_atualizar" name="senha_login_atualizar" hidden type="password" placeholder="senha"/>
 						<button type="button" id="bt_atualizar" hidden >ATUALIZAR</button>
-					</form>
-                                </form>
-                        </div>
+				</form>
+			</div>
                 </div>
         </body>
 </html>

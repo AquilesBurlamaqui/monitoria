@@ -46,6 +46,36 @@ $(document).ready(function(){
 /*=============================================================================*/
 
 $(document).ready(function() {
+	$("#formulario_atualizacao").validate({
+		rules:{
+			nome_login_atualizar:{
+        			required: false, minlength: 2
+    	  		},
+			email_login_atualizar:{
+				required: false, email: true
+      			},
+      			senha_login_atualizar:{
+				required: false, minlength: 2
+      			}
+   	 	},
+   		messages:{
+			nome_login_atualizar:{
+       		 		required: "O campo nome é obrigatório"
+      			},
+			email_login_atualizar: {
+        			required: "O campo email é obrigatório.",
+         			email_usuario: "Digite um email válido."
+        		},
+      		  	senha_login_atualizar: {
+                		required: "O campo senha é obrigatório."
+       		 	}
+		}
+	});
+});
+
+/*=============================================================================*/
+
+$(document).ready(function() {
 	$("#formulario_cadastro").validate({
 		rules:{
 			nome_usuario:{
@@ -159,6 +189,8 @@ $(document).ready(function()
 //atualizar cadastro
 $(document).ready(function(){
 	$("#bt_atualizar").click(function(){
+		if( $("#formulario_atualizacao").valid() )
+		{
 		var nome = $("#nome_login_atualizar").val().trim();
 		var email = $("#email_login_atualizar").val().trim();
 		var senha = $("#senha_login_atualizar").val().trim();
@@ -175,16 +207,20 @@ $(document).ready(function(){
 				{
 					if(data.status == 'success')
 					{
-						$("#nome_login_atualizar").val('');	
-						$("#email_login_atualizar").val('');	
-						$("#senha_login_atualizar").val('');
-
-						$("#nome_login_atualizar").fadeOut("slow");	
-						$("#email_login_atualizar").fadeOut("slow");	
-						$("#senha_login_atualizar").fadeOut("slow");	
+						$("#nome_login_atualizar").fadeOut("fast");	
+						$("#email_login_atualizar").fadeOut("fast");	
+						$("#senha_login_atualizar").fadeOut("fast");	
 						$("#bt_atualizar").fadeOut("slow");
-						$("#nome_sessao").text('Olá, ' + nome);
-						//<?php echo $_SESSION['nome'] ?>	
+
+						$("#nome_login_atualizar").val('');
+                                                $("#email_login_atualizar").val('');
+                                                $("#senha_login_atualizar").val('');
+						
+						$("#nome_login_atualizar").val('');
+                                                $("#email_login_atualizar").val('');
+                                                $("#senha_login_atualizar").val('');	
+
+						window.location.reload();
     					}
 					else if(data.status == 'error')
 					{
@@ -231,6 +267,7 @@ $(document).ready(function(){
         	      		alert('Uups! Ocorreu algum erro!');
 				alert(data);
 			});
+		}
 	});
 });
 
