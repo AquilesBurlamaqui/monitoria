@@ -8,28 +8,26 @@
 	//cria uma nova instancia da classe
         $conexao = new Conexao();
 
-	//conexao com banco de dados
-        $dbconn = pg_connect("host=localhost dbname=bdweb user=bdweb password=bdweb2016") or die('Could not connect: ' . pg_last_error());
-
         //$json = json_decode($_POST['dadosFormulario'], true);
 
-        $login = $_POST["l"];
-        $senha = md5($_POST["s"]);
+        $nome = $_POST["post_nome"];
+        $senha = md5($_POST["post_senha"]);
 
-	//sessao para login
-        $_SESSION['login'] = $login;
-	//sessao para senha
-        $_SESSION['senha'] = $senha;
+        $sql = "SELECT * FROM tb_usuario_jailsonbw WHERE nome = '$nome' AND password = '$senha';";
 
-        $sql = "SELECT * FROM tb_usuario_jailsonbw WHERE email = '$login' AND password = '$senha';";
-        $resultado = pg_query($dbconn, $sql);
-	$rows = pg_num_rows($resultado);
-        pg_close($conexao);
+	$resultado = pg_query($conexao->abrirConexao(), $sql);
+	$linha = pg_num_rows($resultado);
+	$row = pg_fetch_array($resultado);
+
+	$conexao->fecharConexao();
 
         header('Content-type: application/json');
 
-        if($rows > 0)
+        if($linha > 0)
 	{
+		//sessao para login
+	        $_SESSION['nome'] = $nome;
+		$_SESSION['codigo_usuario'] = $row["codigo_usuario"];
 		$response_array['status'] = 'success';
 	}
 	else

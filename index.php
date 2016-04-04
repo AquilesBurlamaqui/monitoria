@@ -1,16 +1,3 @@
-<?php
-        session_start();
-        //verifica se tem algum usuario logado
-        if(!isset($_SESSION['login']) || !isset($_SESSION['senha']))
-        {
-		//header("Location: login.php");
-		echo("nao logado");
-	}
-	else
-	{
-		echo("logado");
-        }
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -22,7 +9,7 @@
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.js"> </script>
 		<script type="text/javascript" src="js/scripts.js"></script>
 		<script type="text/javascript" src="js/messages_pt_BR.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 		<link rel="stylesheet" href="css/estilo.css" crossorigin="anonymous"/>
 	</head>
 	<body>
@@ -46,7 +33,7 @@
       					<p class="message">Já possui cadastro? <a href="#">Entrar</a></p>
    				 </form>
     				<form class="login-form" method="post">
-      					<input id="email_login" type="text" placeholder="usuario"/>
+      					<input id="nome_login" type="text" placeholder="nome de usuario"/>
       					<input id="senha_login" type="password" placeholder="senha"/>
 					<button type="button" id="bt_login">LOGIN</button>
 					<p class="message">Nao possui cadastro? <a href="#">Crie uma conta</a></p>

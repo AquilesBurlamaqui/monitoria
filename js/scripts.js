@@ -1,9 +1,45 @@
 /*=============================================================================*/
 
-$(document).ready(function()
-{
+$(document).ready(function(){
 	$('.message a').click(function(){
 		$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+	});
+});
+
+/*=============================================================================*/
+
+$(document).ready(function(){
+        $("#editar_perfil").click(function(){
+		$("#nome_login_atualizar").val('');
+		$("#email_login_atualizar").val('');
+		$("#senha_login_atualizar").val('');
+
+		$("#nome_login_atualizar").fadeIn("fast");
+		$("#email_login_atualizar").fadeIn("fast");
+		$("#senha_login_atualizar").fadeIn("fast");
+		$("#bt_atualizar").fadeIn("slow");
+        });
+});
+
+/*=============================================================================*/
+
+$(document).ready(function(){
+	$("#sair").click(function(){
+		$.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "logout.php",
+                        asyc: true,
+                        encode: true,
+			success: function(data)
+                        {
+                                if(data.status == 'success')
+                                {
+                                        window.location.href= "index.php";
+                                }
+                        }
+		});
+
 	});
 });
 
@@ -46,76 +82,155 @@ $(document).ready(function()
 	{
 		if( $("#formulario_cadastro").valid() )
 		{
-		var nome = $("#nome_usuario").val().trim();
-		var email = $("#email_usuario").val().trim();
-		var senha = $("#senha_usuario").val().trim();
+			var nome = $("#nome_usuario").val().trim();
+			var email = $("#email_usuario").val().trim();
+			var senha = $("#senha_usuario").val().trim();
+			var codigo = 1;
+
+			//var dadosFormulario = $("#formulario_cadastro").serialize();
 		
-		var dadosFormulario = $("#formulario_cadastro").serialize();
-		
-		$.ajax({
-			type: "post",
-			dataType: "json",
-			url: "inserir_usuario.php",
-			asyc: true,
-			data: {n: nome, e:email, s: senha },
-			encode: true,
-			success: function(data)
-			{
-				if(data.status == 'success')
+			$.ajax({
+				type: "post",
+				dataType: "json",
+				url: "inserir_usuario.php",
+				asyc: true,
+				data: {post_nome: nome, post_email:email, post_senha: senha, post_codigo: codigo},
+				encode: true,
+				success: function(data)
 				{
-     					$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-					$('#nome_usuario').val('');
-	                		$('#email_usuario').val('');
-	                		$('#senha_usuario').val('');
-					$("#email_login").val(email);
-					$("#senha_login").val(senha);
-    				}
-				else if(data.status == 'error')
+					if(data.status == 'success')
+					{
+     						$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+						$('#nome_usuario').val('');
+	               	 			$('#email_usuario').val('');
+	               	 			$('#senha_usuario').val('');
+						$("#nome_login").val(nome);
+						$("#senha_login").val(senha);
+    					}
+					else if(data.status == 'error')
+					{
+        					alert("usuario não inserido");
+   		 			}	
+				}, 
+				error: function(x, e)
+				{	
+					if (x.status == 0)
+					{
+     						alert('You are offline!!\n Please Check Your Network.');
+    					}
+					else if(x.status==404)
+					{
+       						 alert('Requested URL not found.');
+  					}
+					else if(x.status==500)
+					{
+       	 					alert('Internel Server Error.');
+    					}
+					else if(e=='parsererror') 
+					{
+       	 					alert('Error.\nParsing JSON Request failed.');
+    					}
+					else if(e=='timeout')
+					{
+   						alert('Request Time out.');
+    					}
+					else
+					{
+        					alert('Erro desconhecido.\n'+x.responseText);
+    					}
+				}
+			}).done(function(data){
+				if(response.status)
 				{
-        				alert("usuario não inserido");
-   		 		}	
-			}, 
-			error: function(x, e)
-			{	
-				if (x.status == 0)
-				{
-     					alert('You are offline!!\n Please Check Your Network.');
-    				}
-				else if(x.status==404)
-				{
-       					 alert('Requested URL not found.');
-  				}
-				else if(x.status==500)
-				{
-       	 				alert('Internel Server Error.');
-    				}
-				else if(e=='parsererror') 
-				{
-       	 				alert('Error.\nParsing JSON Request failed.');
-    				}
-				else if(e=='timeout')
-				{
-   					alert('Request Time out.');
-    				}
+					alert('Registo bem Sucedido!');
+        			}
 				else
 				{
-        				alert('Erro desconhecido.\n'+x.responseText);
-    				}
-			}
-		}).done(function(data){
-			if(response.status)
-			{
-				alert('Registo bem Sucedido!');
-        		}
-			else
-			{
-            			alert('Uups! Ocorreu algum erro!');
-        		}
-    		}).fail(function(xhr, desc, err) {
-        	        alert('Uups! Ocorreu algum erro!');
-			alert(data);
-		});
+            				alert('Uups! Ocorreu algum erro!');
+        			}
+    			}).fail(function(xhr, desc, err) {
+        	      		alert('Uups! Ocorreu algum erro!');
+				//alert(data);
+			});
 		}
+	});
+});
+
+//atualizar cadastro
+$(document).ready(function(){
+	$("#bt_atualizar").click(function(){
+		var nome = $("#nome_login_atualizar").val().trim();
+		var email = $("#email_login_atualizar").val().trim();
+		var senha = $("#senha_login_atualizar").val().trim();
+		var codigo = 2;
+		
+			$.ajax({
+				type: "post",
+				dataType: "json",
+				url: "inserir_usuario.php",
+				asyc: true,
+				data: {post_nome: nome, post_email:email, post_senha: senha, post_codigo: codigo},
+				encode: true,
+				success: function(data)
+				{
+					if(data.status == 'success')
+					{
+						$("#nome_login_atualizar").val('');	
+						$("#email_login_atualizar").val('');	
+						$("#senha_login_atualizar").val('');
+
+						$("#nome_login_atualizar").fadeOut("slow");	
+						$("#email_login_atualizar").fadeOut("slow");	
+						$("#senha_login_atualizar").fadeOut("slow");	
+						$("#bt_atualizar").fadeOut("slow");
+						$("#nome_sessao").text('Olá, ' + nome);
+						//<?php echo $_SESSION['nome'] ?>	
+    					}
+					else if(data.status == 'error')
+					{
+        					alert("usuario não inserido");
+   		 			}	
+				}, 
+				error: function(x, e)
+				{	
+					if (x.status == 0)
+					{
+     						alert('You are offline!!\n Please Check Your Network.');
+    					}
+					else if(x.status==404)
+					{
+       						 alert('Requested URL not found.');
+  					}
+					else if(x.status==500)
+					{
+       	 					alert('Internel Server Error.');
+    					}
+					else if(e=='parsererror') 
+					{
+       	 					alert('Error.\nParsing JSON Request failed.');
+    					}
+					else if(e=='timeout')
+					{
+   						alert('Request Time out.');
+    					}
+					else
+					{
+        					alert('Erro desconhecido.\n'+x.responseText);
+    					}
+				}
+			}).done(function(data){
+				if(response.status)
+				{
+					alert('Registo bem Sucedido!');
+        			}
+				else
+				{
+            				alert('Uups! Ocorreu algum erro!');
+        			}
+    			}).fail(function(xhr, desc, err) {
+        	      		alert('Uups! Ocorreu algum erro!');
+				alert(data);
+			});
 	});
 });
 
@@ -127,46 +242,27 @@ $(document).ready(function()
 {
 	$("#bt_login").click(function()
 	{
-		//alert("carregou");
-		//$("#bt_login").hide();
-		//$("#img_loading").show();
-		//$("#img_loading").fadeIn(500);
-		
-		var login = $("#email_login").val().trim();
+		var nome_login = $("#nome_login").val().trim();
 		var senha_login = $("#senha_login").val().trim();
 		
-		//alert(login);
-		//alert(senha_login);
-
 		$.ajax({
 
 			type: "post",
 			dataType: "json",
 			url: "buscar_login.php",
 			asyc: true,
-			data: {l: login, s: senha_login},
+			data: {post_nome: nome_login, post_senha: senha_login},
 			encode: true,
 			success: function(data)
 			{
 				if(data.status == 'success')
 				{
-					//alert("ok");
-     					$("#sucesso").show();
-					//$("#sucesso").css("background-color", "green");
-					//$("#sucess").text("Sucesso");
-					$("#sucesso").fadeOut(3000);
-					//$("#img_loading").hide();
-                       	                //$("#bt_login").show();
+					window.location.href= "perfil.php";
 				}
 				else if(data.status == 'error')
 				{
-					//alert("fail");
 					$("#error-div").show();
-					//$("#sucesso").text("usuario e ou senha incorretos");
-					//$("#sucesso").css("background-color", "red");
 					$("#error-div").fadeOut(3000);
-					//$("#img_loading").hide();
-					//$("#bt_login").show();
    		 		}	
 			}
 			
