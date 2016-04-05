@@ -2,16 +2,12 @@
 var user = {
     name: "",
     login: "", //email
-    about: "",
-    location: "",
     logged: false,
     populate: function (data) {
         console.log("in user populate () ");
         console.log(data);
         user.name = data.name;
         user.login = data.email;
-        user.about = data.about;
-        user.location = data.location;
         user.logged = true;
         //alert("User initialized!");
         $("#loginContent").hide();
@@ -20,8 +16,6 @@ var user = {
     update: function (data) {
         //try {
             user.name = data.name;
-            user.about = data.about;
-            user.location = data.location;
             startMainPage();
             setProfileEditingAlert();
             if (alertID !== "profileEditing") {
@@ -34,8 +28,6 @@ var user = {
     clear: function () {
         user.name = "";
         user.login = "";
-        user.about = "";
-        user.location = "";
         user.logged = false;
     }
 }
@@ -45,15 +37,6 @@ var registerModalID = "registration";
 
 //------------- General function for an Ajax request -------------
 function readableDate(dateObject) {
-    /*
-    var year = dateObject.getFullYear();
-    var month = dateObject.getMonth();
-    var day = dateObject.getDate();
-    var hour = dateObject.getHours();
-    var min = dateObject.getMinutes();
-    var sec = dateObject.getSeconds();
-    */
-
     var time = [dateObject.getHours(),
                 dateObject.getMinutes(),
                 dateObject.getSeconds(),
@@ -103,9 +86,9 @@ function verifyRegistrationFields() {
     var errors = false;
     var formContent = document.getElementById("registerModalContent").elements;
     console.log(formContent);
-    for (var i = 0; i < formContent.length - 3; i++) {
+    for (var i = 0; i < formContent.length - 2; i++) {
         var visible = $(formContent[i]).is(":visible");
-        if ((visible) && (formContent[i].value === "" || formContent[i].value == "-1")) {
+        if ((visible) && (formContent[i].value === "" )) {
             console.log(formContent[i].id);
             console.log(formContent[i].style.visibility !== "hidden" ? "visible" : "hidden");
             formContent[i].style = "border-color: #ff4d4d";
@@ -242,8 +225,6 @@ function bind() {
     $(":input").attr("autocomplete", "off");
     $(":input").attr("autocapitalize", "off");
 
-    //Initialize location dropdowns
-    populateCountries("registerCountry", "registerState");
     //----------------------------------------------------------------
 
     //-------- Bind function on checkbox to see the password ---------
@@ -310,7 +291,7 @@ function bind() {
         }
     }
     $("#loginForm").submit(function () {
-        var loginData = $(this).serialize();
+        var loginData = $("#loginForm").serialize();
         console.log(loginData);
 
         ajaxCall("login.php", loginData, successFulLogin);
@@ -321,20 +302,31 @@ function bind() {
     //------------- Ajax call to performe registration ---------------
     $("#registerModalContent").submit(function () {
         var isValid = !verifyRegistrationFields();
+        
         if (isValid) {
             var registerData = $(this).serialize();
             console.log(registerData);
             if (registerModalID === "registration") {
                 function onSuccess(data) {
+                    try{
+                    console.log("ajax retornou dados: ");
+                    console.log(data);
                     var login = $("#registerEmail").val();
                     var senha = $("#registerPassword").val();
                     $("#loginEmail").val(login);
                     $("#loginPassword").val(senha);
                     $("#loginForm").trigger("submit");
                     $("#registerModal").modal('hide');
+                    }catch(e){
+                        console.log(e);
+                    }
                 }
-                
-                ajaxCall("register.php", registerData, onSuccess);
+                console.log("chamando ajax");
+                try{
+                     ajaxCall("register.php", registerData, onSuccess);
+                }catch(e){
+                    console.log("->" + e);
+                }
             } else {
                 if (registerModalID === "editing") {
                     function onSuccess(data) {
