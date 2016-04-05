@@ -25,10 +25,10 @@
 		<div class="login-page">
 			<div class="form">
 				<form class="register-form" method="post" id="formulario_cadastro">
-					<input type="text" id="nome_usuario" name="nome_usuario" placeholder="nome"/>
-					<input type="text" id="email_usuario" name="email_usuario" placeholder="email"/>
-					<input id="senha_usuario" type="password" name="senha_usuario" placeholder="senha"/>
-					<!--<input type="button" id="bt_cadastrar" name="filter" value="Filter" />-->
+					<input type="text" id="nome_usuario"  name="nome_usuario" placeholder="nome"/>
+					<input type="text" id="email_usuario" disabled name="email_usuario" placeholder="email"/>
+					<input id="senha_usuario" type="password" disabled name="senha_usuario" placeholder="senha"/>
+					<!--<input type="button" id="bt_cadastrar" hidden="hidden" name="filter" value="Filter" />-->
 					<button type="button" id="bt_cadastrar">CRIAR</button>
       					<p class="message">Já possui cadastro? <a href="#">Entrar</a></p>
    				 </form>

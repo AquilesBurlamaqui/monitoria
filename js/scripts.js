@@ -1,3 +1,33 @@
+$(document).ready(function(){
+	$("#nome_usuario").blur(function(){
+		var nome = $("#nome_usuario").val().trim();
+		var email = "";
+		var senha = "";
+		var codigo = 3;
+
+		$.ajax({
+			type: "post",
+			dataType: "json",
+			url: "inserir_usuario.php",
+			asyc: true,
+			data: {post_nome: nome, post_email:email, post_senha: senha, post_codigo: codigo},
+			encode: true,
+			success: function(data)
+			{
+				if(data.status == 'success')
+				{
+					//alert("ja cadastrado");
+   				}
+				else if(data.status == 'error')
+				{
+					$("#email_usuario").removeAttr('disabled');
+					$("#senha_usuario").removeAttr('disabled');
+  				}	
+			} 
+		});
+	});
+});
+
 /*=============================================================================*/
 
 $(document).ready(function(){
@@ -79,13 +109,13 @@ $(document).ready(function() {
 	$("#formulario_cadastro").validate({
 		rules:{
 			nome_usuario:{
-        			required: true, minlength: 2
+        			required: true, minlength: 3
     	  		},
 			email_usuario:{
 				required: true, email: true
       			},
       			senha_usuario:{
-				required: true, minlength: 2
+				required: true, minlength: 6
       			}
    	 	},
    		messages:{
@@ -115,9 +145,8 @@ $(document).ready(function()
 			var nome = $("#nome_usuario").val().trim();
 			var email = $("#email_usuario").val().trim();
 			var senha = $("#senha_usuario").val().trim();
+			var senha = $("#senha_usuario").val().trim();
 			var codigo = 1;
-
-			//var dadosFormulario = $("#formulario_cadastro").serialize();
 		
 			$.ajax({
 				type: "post",
@@ -136,6 +165,8 @@ $(document).ready(function()
 	               	 			$('#senha_usuario').val('');
 						$("#nome_login").val(nome);
 						$("#senha_login").val(senha);
+						$('#email_usuario').attr("disabled", "disabled");
+						$('#senha_usuario').attr("disabled", "disabled");
     					}
 					else if(data.status == 'error')
 					{
