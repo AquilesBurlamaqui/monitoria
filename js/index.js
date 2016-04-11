@@ -21,7 +21,6 @@ var user = {
             if (alertID !== "profileEditing") {
                 setProfileEditingAlert(data.error, data.errorMessage);
             }
-            alertID = "profileEditing";
             $("#alertModal").modal('show');
         //} catch (e) { alert(e); }
     },
@@ -74,8 +73,6 @@ function ajaxCall(link, dataToBeUsed, successFunc) {
 function startMainPage() {
     var welcomeText = "Welcome " + user.name + "!";
     $("#welcomeDiv").text(welcomeText);
-    $("#fromDiv").text(user.location);
-    $("#aboutDiv").text(user.about);
     $("#homeContent").show();
     window.location.href = "#home"
 }
@@ -104,10 +101,10 @@ function verifyRegistrationFields() {
 
 //------------------ Setting Logout Alert ------------------------
 function setLogOutAlert() {
-    $("#alertTitle").text("Alert");
-    $("#alertBody").text("Do you really want to leave?");
-    $("#confirmAlertBtn").text(" Yes");
-    $("#closeAlertBtn").text(" No");
+    $("#alertTitle").text("Alerta!");
+    $("#alertBody").text("Você realmente deseja sair?");
+    $("#confirmAlertBtn").text(" Sim");
+    $("#closeAlertBtn").text(" Não");
     $("#confirmAlertBtn").removeClass();
     $("#closeAlertBtn").removeClass();
     $("#confirmAlertBtn").addClass("btn btn-primary fa fa-frown-o");
@@ -121,6 +118,7 @@ function setLogOutAlert() {
 
     $("#confirmAlertBtn").show();
     $("#closeAlertBtn").show();
+    alertID = "logOut";
 }
 //----------------------------------------------------------------
 
@@ -129,8 +127,8 @@ function setUpGoodByeAlert() {
     $("#confirmAlertBtn").hide();
     $("#closeAlertBtn").show();
 
-    $("#alertTitle").text("It was good having you with us!");
-    $("#alertBody").html("We hope you're back soon.");
+    $("#alertTitle").text("Foi bom ter você conosco!");
+    $("#alertBody").html("Esperamos que você volte em breve...");
 
     $("#closeAlertBtn").text(" OK");
     $("#closeAlertBtn").removeClass();
@@ -148,12 +146,12 @@ function setUpGoodByeAlert() {
 
 //------------------ Setting Delete Alert ------------------------
 function setDeleteAlert() {
-    $("#alertTitle").text("Careful...");
-    var confirmationHtml = "Do you really want to delete your account? <br/>" +
-                           "You should have in mind that ALL your information will be gone from our servers :/";
+    $("#alertTitle").text("Atenção!");
+    var confirmationHtml = "Você realmente quer excluir definitivamente sua conta? <br/>" +
+                           "Toda sua informação será perdida e não poderá ser recuperada em possíveis futuras tentativas...";
     $("#alertBody").html(confirmationHtml);
-    $("#confirmAlertBtn").text(" Yes");
-    $("#closeAlertBtn").text(" No");
+    $("#confirmAlertBtn").text(" Sim");
+    $("#closeAlertBtn").text(" Não");
     $("#confirmAlertBtn").removeClass();
     $("#closeAlertBtn").removeClass();
     $("#confirmAlertBtn").addClass("btn btn-primary fa fa-frown-o");
@@ -173,6 +171,8 @@ function setDeleteAlert() {
 
     $("#confirmAlertBtn").show();
     $("#closeAlertBtn").show();
+
+    alertID = "delete";
 }
 //----------------------------------------------------------------
 
@@ -181,18 +181,20 @@ function setProfileEditingAlert(error, errorMessage) {
     try {
         $("#closeAlertBtn").removeClass();
         if (error !== true) {
-            $("#alertTitle").text("Alert");
-            $("#alertBody").text("Your personal information has been successfully updated!");
+            $("#alertTitle").text("Alerta!");
+            $("#alertBody").text("Suas informações pessoais foram atualizadas com sucesso!");
             $("#closeAlertBtn").addClass("btn btn-primary fa fa-smile-o");
         } else {
-            $("#alertTitle").text("We're Sorry!");
-            $("#alertBody").text("There was an error while updating your information: " + errorMessage);
+            $("#alertTitle").text("Pedimos desculpas...");
+            $("#alertBody").text("Infelizmente houve um erro ao tentarmos atualizar seus dados pessoas." +
+                                 "Informações sobre o erro: \n" + errorMessage);
             $("#closeAlertBtn").addClass("btn btn-primary fa fa-frown-o");
         }
 
         $("#closeAlertBtn").text(" OK");
         $("#confirmAlertBtn").hide();
         $("#closeAlertBtn").show();
+        alertID = "profileEditing";
     } catch (e) {
         alert(e);
     }
@@ -202,9 +204,8 @@ function setProfileEditingAlert(error, errorMessage) {
 //--------- Changing Register Modal for Profile Editing ----------
 function setRegisterModalToEditing() {
     if (registerModalID !== "editing") {
-        $("#registrationTitle").text("Profile Editing");
+        $("#registrationTitle").text("Edite seu perfil");
         $("#registerName").val(user.name);
-        $("#registerAbout").val(user.about);
         $("#registerBtn").text("Submit");
         $("#registerEmail").val(user.login);
 
@@ -218,6 +219,27 @@ function setRegisterModalToEditing() {
 }
 //----------------------------------------------------------------
 
+function setErrorInRegistrationAlert(errorMsg) {
+    try {
+        $("#alertTitle").text("Alerta!"); 
+        $("#alertBody").html(errorMsg);
+        $("#confirmAlertBtn").text(" OK"); 
+        $("#confirmAlertBtn").removeClass(); 
+        $("#confirmAlertBtn").addClass("btn btn-primary fa fa-frown-o"); 
+
+        $("#confirmAlertBtn").unbind("click");
+        $("#confirmAlertBtn").on("click", function () {
+            try {
+                $("#alertModal").modal('hide');
+                $("#registerModal").modal('show');
+            } catch (e) { console.log("inner error -> "); }
+        });
+
+        $("#confirmAlertBtn").show();
+        $("#closeAlertBtn").hide();
+        alertID = "registrationError";
+    } catch (e) { console.log("erro: " + e);}
+}
 
 function bind() {
     //---------------------- Default Settings ------------------------
@@ -225,6 +247,14 @@ function bind() {
     $(":input").attr("autocomplete", "off");
     $(":input").attr("autocapitalize", "off");
 
+    //Setting up register modal
+    $("#registerModal").on("shown.bs.modal", function () {
+        $("#registerModalContent").focus()
+    });
+    //Setting up alert modal
+    $("#alertModal").on("shown.bs.modal", function () {
+        $("#alertModalContent").focus();
+    });
     //----------------------------------------------------------------
 
     //-------- Bind function on checkbox to see the password ---------
@@ -245,36 +275,26 @@ function bind() {
     });
     //----------------------------------------------------------------
 
-    //----------------- Setting up register modal --------------------
-    $("#registerModal").on("shown.bs.modal", function () {
-        $("#registerModalContent").focus()
-    });
-
+    //----------------- Opens the Registration modal -----------------
     $("#linkToRegister").on("click", function () {
         $("#registerModal").modal('show');
     });
     //----------------------------------------------------------------
 
-    //------------------- Setting up LogOut modal ---------------------
-    $("#alertModal").on("shown.bs.modal", function () {
-        $("#alertModalContent").focus()
-    });
-
+    //------------------- Opens the Logout modal ---------------------
     $("#logOut").on("click", function () {
         if (alertID !== "logOut") {
             setLogOutAlert();
         }
-        alertID = "logOut";
         $("#alertModal").modal('show');
     });
     //----------------------------------------------------------------
 
-    //------------------- Setting up Delete modal ---------------------
+    //------------------- Opens Delete modal ---------------------
     $("#deleteAcc").on("click", function () {
         if (alertID !== "delete") {
             setDeleteAlert();
         }
-        alertID = "delete";
         $("#alertModal").modal('show');
     });
     //----------------------------------------------------------------
@@ -306,29 +326,33 @@ function bind() {
         if (isValid) {
             var registerData = $(this).serialize();
             console.log(registerData);
-            if (registerModalID === "registration") {
+            if (registerModalID === "registration") { //Registrando usuário
                 function onSuccess(data) {
-                    try{
-                    console.log("ajax retornou dados: ");
+                    console.log("ajax retornou os seguintes dados dados: ");
                     console.log(data);
-                    var login = $("#registerEmail").val();
-                    var senha = $("#registerPassword").val();
-                    $("#loginEmail").val(login);
-                    $("#loginPassword").val(senha);
-                    $("#loginForm").trigger("submit");
-                    $("#registerModal").modal('hide');
-                    }catch(e){
-                        console.log(e);
+                    if (data.output === true) {
+                        var login = $("#registerEmail").val();
+                        var senha = $("#registerPassword").val();
+                        $("#loginEmail").val(login);
+                        $("#loginPassword").val(senha);
+                        $("#loginForm").trigger("submit");
+                        $("#registerModal").modal('hide');
+                    } else if (data.output === false) {
+                        $("#registerPassword").val("");
+                        $("#confirmPassword").val("");
+                        if (alertID !== "registrationError") {
+                            setErrorInRegistrationAlert(data.message);
+                        }
+                        try {
+                            $("#registerModal").modal('hide');
+                            $("#alertModal").modal('show');
+                        } catch (e) { alert("aff: "+e);}
                     }
                 }
                 console.log("chamando ajax");
-                try{
-                     ajaxCall("register.php", registerData, onSuccess);
-                }catch(e){
-                    console.log("->" + e);
-                }
+                ajaxCall("register.php", registerData, onSuccess);
             } else {
-                if (registerModalID === "editing") {
+                if (registerModalID === "editing") { //Editando dados do usuário
                     function onSuccess(data) {
                         try {
                             $("#registerModal").modal('hide');
@@ -352,15 +376,12 @@ function bind() {
     //----------------------------------------------------------------
 
     //----------------------------------------------------------------
-    
     $("#publishBtn").on("click", function () {
         try {
             var thinking = $("#thinkingArea").val();
             //console.log(thinking);
             if (thinking !== "") {
                 $("#thinkingArea").val("");
-                //var date = readableDate(new Date());
-                //console.log(date);
                 var htmlString = "<table class='thought'>" +
                                     "<tr>" +
                                         "<td align='right' style='padding-top: 0.3rem;'>" +
@@ -385,32 +406,8 @@ function bind() {
 }
 
 $(function () {
-    //$("#homeContent").hide();
-
-    //Bind functions to body elements
     window.location.href = "#login";
     $("#loginAlert").hide();
     $("#homeContent").hide();
-    bind();
+    bind(); //Bind functions to body elements
 });
-
-
-
-
-
-
-/*$.ajax({
-            type: "POST",
-            dataType: "json",
-            url: "login.php",
-            data: loginData,
-            success: function (data) {
-                $("#loginPassword").val("");
-                if (data !== null) {
-                    $("#loginEmail").val("");
-                    user.populate(data);
-                } else {
-                    alert("user does not exist!");
-                }
-            }
-        });*/
