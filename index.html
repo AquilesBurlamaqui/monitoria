@@ -60,7 +60,7 @@
                         </div>
                         <div class="modal-footer" style="padding-bottom:0px;">
                             <button type="submit" class="btn btn-primary" id="registerBtn">Register!</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+role="tabpanel" class="tab-pane active" id="home">                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
@@ -75,6 +75,7 @@
         <!-- Nav Tabs -->
         <ul id="contentTabs" class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="fa fa-home"></span>  Home</a></li>
+	    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-list-alt"></span> Problemas</a></li>
         </ul>
         <!-- End of Nav Tabs -->
         <!-- Tab panes -->
@@ -120,7 +121,21 @@
                 <div id="thinkingsList"></div>
             </div>
             <!-- End of Home Content -->
-        </div>
+	    <!-- Problem Content -->
+		<div role="tabpanel" class="tab-pane active" id="problem">
+	                <form id="problemForm">
+        	            <div class="form-group">
+                	        <label for="problemArea">What is your doubt?</label>
+                        	<textarea maxlength="160" name="problemArea" class="form-control" id="problemArea"></textarea>
+               		     </div>
+                	   	 <button type="button" class="btn btn-default" id="publishBtn"> Publish!</button>
+               		 </form>
+
+                <br/>
+                <div id="problemList"></div>
+
+                </div>
+	<!-- End of Problem Content -->
         <!-- End of Tab Panes -->
         <!-- Footer navbar navbar-inverse navbar-fixed-bottom-->
         <table class="homeFooter navbar-fixed-bottom">
