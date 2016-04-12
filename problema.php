@@ -8,14 +8,12 @@ $dbconn = pg_connect("host=localhost dbname=bdweb user=bdweb password=bdweb2016"
    $email = $_SESSION['email'];
 // Performing SQL query
 
-$result = pg_query("SELECT * FROM monitoria.usuario WHERE email='$email'") 
-or die('Query failed: ' . pg_last_error());
+$result = pg_query("SELECT * FROM monitoria.usuario WHERE email='$email'") or die('Query failed: ' . pg_last_error());
 $row = pg_fetch_assoc($result);
 
 $user_id = $row['id'];
 
-$insert = pg_query("INSERT INTO monitoria.problema(definicao,usuario_id) 
-VALUES('$definicao','$user_id')");
+$insert = pg_query("INSERT INTO monitoria.problema(definicao,usuario_id) VALUES('$definicao','$user_id')");
 
 // Free resultset
 pg_free_result($result);
