@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="third-party/font-awesome-4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+
 </head>
 <body>
     <!-- Login Div -->
@@ -58,6 +59,18 @@
                             <label for="confirmPassword">Confirm Password</label>
                             <input type="password" name="registerConfirmPassword" class="form-control" id="confirmPassword" placeholder="**********">
                         </div>
+                        <div class="form-group" id="countryGroup">
+                            <label for="registerCountry">Country</label>
+                            <select name="registerCountry" class="form-control" id="registerCountry"></select>
+                        </div>
+                        <div class="form-group" id="stateGroup">
+                            <label for="registerState">State</label>
+                            <select name="registerState" class="form-control" id="registerState"></select>
+                        </div>
+                        <div class="form-group" id="aboutGroup">
+                            <label for="registerAbout">About</label>
+                            <textarea style="height: 150px;" maxlength="500" name="registerAbout" class="form-control" id="registerAbout"></textarea>
+                        </div>
                         <div class="modal-footer" style="padding-bottom:0px;">
                             <button type="submit" class="btn btn-primary" id="registerBtn">Register!</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -75,12 +88,14 @@
         <!-- Nav Tabs -->
         <ul id="contentTabs" class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="fa fa-home"></span>  Home</a></li>
+            <li><a href="#problema" aria-controls="home" role="tab" data-toggle="tab"> Problemas</a></li>
         </ul>
         <!-- End of Nav Tabs -->
         <!-- Tab panes -->
         <div class="tab-content">
             <!-- Home Content -->
             <div role="tabpanel" class="tab-pane active" id="home">
+                <br><br>
                 <table style="width: 100%;" class="styledText">
                     <tr>
                         <td style="display: inline-block;">
@@ -108,24 +123,29 @@
                     </tr>
                 </table>
                 <br/>
-                <form id="thinkingForm">
-                    <div class="form-group">
-                        <label for="thinkingArea">What are you thinking?</label>
-                        <textarea maxlength="160" name="thinkingArea" class="form-control" id="thinkingArea"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-default" id="publishBtn"> Publish!</button>
-                </form>
-                
                 <br/>
                 <div id="thinkingsList"></div>
             </div>
             <!-- End of Home Content -->
+            <div role="tabpanel" class="tab-pane" id="problema">
+                <br><br>
+                <form id="sendProblemForm" action="problema.php" method="POST">
+                    <div class="form-group">
+                        <label for="thinkingArea">Cadastrar Problema</label><br>
+                        <textarea name="def" id="def" maxlenght="160" class="form-control"></textarea>
+                    </div>
+                    <input type="submit" value="Cadastrar" class="btn btn-primary" role="button">
+                </form>
+                <br/>
+                <label> Meus problemas cadastrados</label>
+            </div>
         </div>
+
         <!-- End of Tab Panes -->
         <!-- Footer navbar navbar-inverse navbar-fixed-bottom-->
         <table class="homeFooter navbar-fixed-bottom">
             <tr>
-                <td align="right" class="copyrightContainer">© 2016 RQueiroz</td>
+                <td align="right" class="copyrightContainer">Â© 2016 RQueiroz</td>
             </tr>
         </table>
         <!-- End of Footer -->
