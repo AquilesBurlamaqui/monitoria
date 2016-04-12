@@ -58,18 +58,6 @@
                             <label for="confirmPassword">Confirm Password</label>
                             <input type="password" name="registerConfirmPassword" class="form-control" id="confirmPassword" placeholder="**********">
                         </div>
-                        <div class="form-group" id="countryGroup">
-                            <label for="registerCountry">Country</label>
-                            <select name="registerCountry" class="form-control" id="registerCountry"></select>
-                        </div>
-                        <div class="form-group" id="stateGroup">
-                            <label for="registerState">State</label>
-                            <select name="registerState" class="form-control" id="registerState"></select>
-                        </div>
-                        <div class="form-group" id="aboutGroup">
-                            <label for="registerAbout">About</label>
-                            <textarea style="height: 150px;" maxlength="500" name="registerAbout" class="form-control" id="registerAbout"></textarea>
-                        </div>
                         <div class="modal-footer" style="padding-bottom:0px;">
                             <button type="submit" class="btn btn-primary" id="registerBtn">Register!</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -87,7 +75,7 @@
         <!-- Nav Tabs -->
         <ul id="contentTabs" class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="fa fa-home"></span>  Home</a></li>
-            <li><a href="#problema" aria-controls="home" role="tab" data-toggle="tab"> Problemas</a></li>
+            <li><a href="#problemaTab" aria-controls="home" role="tab" data-toggle="tab"> Problemas</a></li>
         </ul>
         <!-- End of Nav Tabs -->
         <!-- Tab panes -->
@@ -126,7 +114,7 @@
                 <div id="thinkingsList"></div>
             </div>
             <!-- End of Home Content -->
-            <div role="tabpanel" class="tab-pane" id="problema">
+            <div role="tabpanel" class="tab-pane" id="problemaTab">
                 <br><br>
                 <form id="thinkingForm" action="problema.php" method="POST">
                     <div class="form-group">

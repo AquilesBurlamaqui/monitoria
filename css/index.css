@@ -18,6 +18,10 @@
     padding: 1rem;
 }
 
+#problemaTab {
+    padding: 1rem;
+}
+
 textarea {
    resize: none;
 }
