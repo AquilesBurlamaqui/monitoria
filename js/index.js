@@ -45,22 +45,13 @@ var registerModalID = "registration";
 
 //------------- General function for an Ajax request -------------
 function readableDate(dateObject) {
-    /*
-    var year = dateObject.getFullYear();
-    var month = dateObject.getMonth();
-    var day = dateObject.getDate();
-    var hour = dateObject.getHours();
-    var min = dateObject.getMinutes();
-    var sec = dateObject.getSeconds();
-    */
 
     var time = [dateObject.getHours(),
                 dateObject.getMinutes(),
                 dateObject.getSeconds(),
                 dateObject.getDate(),
                 dateObject.getMonth(),
-                dateObject.getFullYear()
-                ];
+                dateObject.getFullYear()];
 
     for (var i = 0; i < time.length - 1; i++) {
         if (time[i] < 10) {
@@ -110,8 +101,8 @@ function verifyRegistrationFields() {
             console.log(formContent[i].style.visibility !== "hidden" ? "visible" : "hidden");
             formContent[i].style = "border-color: #ff4d4d";
             errors = true;
-        } else {
-            formContent[i].style = "border-color: ";
+        }else{
+       	 formContent[i].style = "border-color: ";
         }
     }
     console.log(errors);
@@ -158,8 +149,6 @@ function setUpGoodByeAlert() {
         user.clear();
         window.location.reload();
     });
-
-    
 }
 //----------------------------------------------------------------
 
@@ -354,7 +343,6 @@ function bind() {
         } else {
             alert("Please fill the empty fields!");
         }
-
         return false;
     });
     //----------------------------------------------------------------
@@ -401,24 +389,3 @@ $(function () {
     $("#homeContent").hide();
     bind();
 });
-
-
-
-
-
-
-/*$.ajax({
-            type: "POST",
-            dataType: "json",
-            url: "login.php",
-            data: loginData,
-            success: function (data) {
-                $("#loginPassword").val("");
-                if (data !== null) {
-                    $("#loginEmail").val("");
-                    user.populate(data);
-                } else {
-                    alert("user does not exist!");
-                }
-            }
-        });*/
