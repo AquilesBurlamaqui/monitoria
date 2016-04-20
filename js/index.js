@@ -1,3 +1,37 @@
+$("#cadastra_problema").on("click", function () {
+        $("#cadastro_problema").modal('show');
+    });
+
+$(document).ready(function(){
+	$("#bt_cadastrar").click(function(){
+		var post_problema = $("#input_problema").val().trim();
+		var nome_usuario = user.name;
+		$.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "cadastraproblema.php",
+                        asyc: true,
+			data: {problema: post_problema, nomeUsuario: nome_usuario},
+			encode: true,
+			success: function(data)
+                        {
+                                if(data.status == 'success')
+                                {
+					$("#cadastro_problema").modal('hide');
+					alert("cadastrado");
+					//alert(user.name);
+                         	}
+				else
+				{
+					alert("erro " + data.error);
+				}
+                        }
+		});
+
+	});
+});
+
+
 //User object to hold user information
 var user = {
     name: "",

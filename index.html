@@ -134,7 +134,31 @@
             </div><!-- End of Home Content -->
 		<!-- problema-->
 		<div role="tabpanel" class="tab-pane" id="teste">
-			<p>teste</p>
+			<a id="cadastra_problema" href="#problema">Cadastrar problema</a>
+			<!-- Regiter Div -->
+    <div id="cadastro_problema" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="registrationTitle">Cadastro de Problema</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="registerModalContent">
+                        <div class="form-group" id="nameGroup">
+                            <label for="registerName">Descrição</label>
+                            <input type="text" name="input_problema" class="form-control" id="input_problema" placeholder="C++ hello world!">
+                        </div>
+                        <div class="modal-footer" style="padding-bottom:0px;">
+                            <button type="button" class="btn btn-primary" id="bt_cadastrar">cadastrar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- End of Regiter Div -->
             	</div>
         </div>
         <!-- End of Tab Panes -->

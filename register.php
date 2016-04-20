@@ -1,5 +1,6 @@
 <?php
-  class Result {
+  class Result 
+  {
     public $output = "";
     public $message = "";
   }
@@ -20,12 +21,13 @@
     $result->output = FALSE;  
     $result->message = "Passwords do not match!";
   }else{
-	  $isValid = pg_query("SELECT * FROM usuario_rodolfo WHERE email='$emailRegistered'") or die("Query Failed" . pg_last_error());
+	  $isValid = pg_query("SELECT * FROM monitoria.usuario WHERE email='$emailRegistered'") or die("Query Failed" . pg_last_error());
 	  $counter = pg_num_rows($isValid); //Conta quantas linhas encontraram determinado email no banco de dados.
     
-	  if ($counter == 0) { //Caso a quantidade de linhas seja 0, ou seja, o email não estiver no banco
-      try{
-   	 	  $insert = pg_query("INSERT INTO usuario_rodolfo(name, email, password, location, about) VALUES('$nameRegistered','$emailRegistered', '$passwordRegistered', '$fromRegistered', '$aboutRegistered')");
+	  if ($counter == 0)
+          { //Caso a quantidade de linhas seja 0, ou seja, o email não estiver no banco
+            try{
+   	 	  $insert = pg_query("INSERT INTO monitoria.usuario(nome, email, senha) VALUES('$nameRegistered','$emailRegistered', '$passwordRegistered')");
         $result->output = TRUE;
         $result->message = "User created with success!";
       }catch(Exception $e){
