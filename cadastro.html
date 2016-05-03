@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sistema de Login </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+<style>
+form{
+margin-top:40px;
+margin-left:30%;
+color:gray;
+font-size:20px;
+}
+
+#form2{
+margin-top:40px;
+margin-left:30%;
+color:gray;
+font-size:20px;
+}
+
+input{
+border-radius:5px;
+color:gray;
+font-size:20px;
+}
+
+</style>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Página Inicial</a>
+</nav>
+<form action="cadastro.php" method="post">
+
+<table>
+<tr><td>Nome:</td><td><input name="nome" type="text"></td></tr>
+<tr><td>Email:</td><td><input name="email" type"text"></td></tr>
+<tr><td>Senha:</td><td><input name="senha" type="password"></td></tr>
+</table>
+
+<button type="submit" class="btn btn-info">Cadastrar</button>
+</form>
+<a id="form2" href="index.html"><button type="button" class="btn btn-warning">Fazer Login</button></a>
+</body>
+</html>
