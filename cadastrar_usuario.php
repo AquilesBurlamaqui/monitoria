@@ -7,7 +7,7 @@ $validaremail = pg_query("SELECT * FROM monitoria.usuario WHERE email='$email'")
 $contar = pg_num_rows($validaremail);
 if ($contar == 0) {
         $insert = pg_query("INSERT INTO monitoria.usuario(nome, email, senha) VALUES('$nome','$email','$senha')");
-        $redirect = "http://69.60.115.37/~athos/monitoria";
+        $redirect = "index.php";
         header("location:$redirect");
 }
 

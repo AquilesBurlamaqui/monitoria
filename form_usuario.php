@@ -13,8 +13,8 @@
 	  E-mail:<br>
 	  <input type="email" name="email"></br>
 	  Senha:<br>
-	  <input type="text" name="senha"><br>
-	  <input type="submit" value="submit"/>
+	  <input type="password" name="senha"><br>
+	  <input type="submit" value="submit">
  </form>
 
 </body>

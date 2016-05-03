@@ -8,8 +8,12 @@
 </head>
 <body>
 
+<div class="container">
+<div class="jumbotron">
 <h1>Esta é a página do nosso sistema de monitoria</h1>
-<p>A Monitoria interliga monitores e alunos em busca de soluções para problemas</p>
+<h2>A Monitoria interliga monitores e alunos em busca de soluções para problemas</h2>
+</div>
+</div>
 
 <form action="login.php" method="post">
 	email:</br>
