@@ -6,8 +6,8 @@
 </head>
 <body>
 
-<h1>Esta Ã a pÃ¡gina do nosso sistema de monitoria</h1>
-<p>A Monitoria interliga monitores e alunos em busca de soluÃ§Ãµes para problemas</p>
+<h1>Esta é a página do nosso sistema de monitoria</h1>
+<p>A Monitoria interliga monitores e alunos em busca de soluções para problemas</p>
 
 </body>
 </html> 
