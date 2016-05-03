@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Cadastrar</title>
-	</head>
-	<body>
-		<?php
+<?php
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$senha = MD5($_POST['senha']);
+$dbconn = pg_connect("host=localhost dbname=bdweb user=bdweb password=bdweb2016") or die('Could not connect: ' . pg_last_error());
+$validaremail = pg_query("SELECT * FROM monitoria.usuario WHERE email='$email'") or die("Query Failed" . pg_last_error());
+$contar = pg_num_rows($validaremail);
+if ($contar == 0) {
+        $insert = pg_query("INSERT INTO monitoria.usuario(nome, email, senha) VALUES('$nome','$email','$senha')");
+        $redirect = "http://69.60.115.37/~athos/monitoria";
+        header("location:$redirect");
+}
 
-		$con = mysql_connect("localhost", "bdweb", "bdweb2016");
-		if (!$con) {
-			//se der erro exibe msg
-			die('Could not connect: ' . mysql_error());
-		}
-		//seleciona o banco
-		mysql_select_db("bdweb", $con);
-		//executa a query
-		$sql = "INSERT INTO monitoria.usuario (email, senha ) VALUES ('$_POST[email]', '$_POST[senha]')";
-		if (!mysql_query($sql, $con)) {
-			die('Error: ' . mysql_error());
-		}
-		echo "Usuario salvo";
-		echo "<p><a href=\"index.php\">Home</a></p>";		
-		mysql_close($con);
-		?>
-		
-	</body>
-</html>
+pg_close($dbconn);
+?>
+
+
 

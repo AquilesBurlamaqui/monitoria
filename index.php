@@ -9,8 +9,17 @@
 <h1>Esta é a página do nosso sistema de monitoria</h1>
 <p>A Monitoria interliga monitores e alunos em busca de soluções para problemas</p>
 
-<a href="cadastrar_usuario.php">Cadastrar Usuário</a>
-<a href="cadastrar_problema.php">Cadastrar Problema</a>
+<form action="login.php" method="post">
+	email:</br>
+	<input type="email" name="email"></br>
+	senha:</br>
+	<input type="password" name="senha"></br>
+	<input type="submit" value="Entrar">
+</form> 
+
+
+
+
 
 
 

@@ -8,6 +8,8 @@
 
 <h1>Cadastro de Usuário</h1>
 <form method="POST" action="cadastrar.php">
+	  Nome:</br>
+	  <input type="text" name="nome"></br> 
 	  E-mail:<br>
 	  <input type="email" name="email"></br>
 	  Senha:<br>
