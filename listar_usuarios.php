@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Monitoria</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<meta charset="latin-1">
+</head>
+<body>
 <?php
 session_start();
    if($_SESSION["login"]) { 
@@ -30,3 +39,4 @@ session_start();
 } 
 ?>
 
+</body>
