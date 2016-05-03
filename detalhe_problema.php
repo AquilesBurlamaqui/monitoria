@@ -48,6 +48,7 @@ session_start();
  
   
         echo "<a href='form_solucao.php?problema_id=".$_GET["problema_id"]."&usuario_id=".$usuario_id."'>Cadastrar Solucao</a>";
+echo "</br><a href='sucesso.php'>Voltar</a>";
    // Free resultset
    pg_free_result($result);
 
