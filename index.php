@@ -16,7 +16,7 @@
 	<input type="password" name="senha"></br>
 	<input type="submit" value="Entrar">
 </form> 
-
+<a href="form_usuario.php">Cadastrar</a>
 
 
 

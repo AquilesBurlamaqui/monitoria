@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Cadastro de Usuário</title>
-<meta charset="utf-8">
-</head>
-<body>
+<?php
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$senha = MD5($_POST['senha']);
+$dbconn = pg_connect("host=localhost dbname=bdweb user=bdweb password=bdweb2016") or die('Could not connect: ' . pg_last_error());
+$validaremail = pg_query("SELECT * FROM monitoria.usuario WHERE email='$email'") or die("Query Failed" . pg_last_error());
+$contar = pg_num_rows($validaremail);
+if ($contar == 0) {
+        $insert = pg_query("INSERT INTO monitoria.usuario(nome, email, senha) VALUES('$nome','$email','$senha')");
+        $redirect = "http://69.60.115.37/~athos/monitoria";
+        header("location:$redirect");
+}
 
-<h1>Cadastro de Usuário</h1>
-<form method="POST" action="cadastrar.php">
-	  Nome:</br>
-	  <input type="text" name="nome"></br> 
-	  E-mail:<br>
-	  <input type="email" name="email"></br>
-	  Senha:<br>
-	  <input type="text" name="senha"><br>
-	  <input type="submit" value="submit"/>
- </form>
+pg_close($dbconn);
+?>
 
-</body>
-</html>
+
+
