@@ -7,10 +7,10 @@
 
 <h1>Cadastro de Usuário</h1>
 <form method="POST" action="cadastrar.php">
-	  Nome:<br>
-	  <input type="text" name="name"><br>
 	  E-mail:<br>
 	  <input type="email" name="email"></br>
+	  Senha:<br>
+	  <input type="text" name="senha"><br>
 	  <input type="submit" value="submit"/>
  </form>
 
