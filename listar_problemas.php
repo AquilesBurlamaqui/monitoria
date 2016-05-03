@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Monitoria</title>
+<meta charset="utf-8">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<meta charset="latin-1">
+</head>
+<body>
+<div class="container">
+<h2>Problemas</h2>
 <?php
 session_start();
    if($_SESSION["login"]) { 
@@ -39,4 +51,5 @@ session_start();
   echo "Usuário não logado"; 
 } 
 ?>
-
+</body>
+</html>
