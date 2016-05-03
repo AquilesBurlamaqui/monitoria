@@ -80,17 +80,72 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- End of Regiter Div -->
-
+ 
     <!-- Home Page Content-->
     <div id="homeContent" style="padding-top: 1rem;">
         <!-- Main Page Content -->
         <!-- Nav Tabs -->
         <ul id="contentTabs" class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="fa fa-home"></span>  Home</a></li>
-        </ul>
-        <!-- End of Nav Tabs -->
+      <li role="presentation"><a href="#createsolution" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-wrench">Create Solution</a></li>
+<li role="presentation"><a href="#search" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-search"></span>Search problem</a></li>
+
+  
+ </ul>
+          
         <!-- Tab panes -->
-        <div class="tab-content">
+                <div class="tab-content">
+<!--Search-->
+<div role="tabpanel" class="tab-pane" id="search";>
+ <form role="form">
+  <div class="form-group">
+     <div class="form-group">
+  <label for="sel1">language used:</label>
+  <select class="form-control" id="sel1">
+    <option>C</option>
+    <option>C++</option>
+    <option>Java</option>
+    <option>Python</option>
+  </select>
+</div>
+ <div class="form-group">
+  <label for="sel1">Problem Category</label>
+  <select class="form-control" id="sel1">
+    <option>Repeating structure</option>
+    <option>Vectors</option>
+    <option>Matrix</option>
+    <option>Strings</option>
+  <option>Functions</option>
+    <option>Heritage</option>
+ 
+ </select>
+</div>
+  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>filter search</button>
+</form>
+</div>
+
+</div>
+<!-- Create solution-->
+<div role="tabpanel" class="tab-pane" id="createsolution";>
+
+  <div class="form-group">
+    <label for="email">Username:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Problem description:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  
+  
+<div class="form-group">
+  <label for="comment">Solution:</label>
+  <textarea id="selecionado" class="form-control" rows="5" id="comment"></textarea>
+<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plane"></span>Submit</button>
+</form>
+ 
+</div>
+ </div>
             <!-- Home Content -->
             <div role="tabpanel" class="tab-pane active" id="home">
                 <table style="width: 100%;" class="styledText">
@@ -125,8 +180,56 @@
                         <label for="thinkingArea">What are you thinking?</label>
                         <textarea maxlength="160" name="thinkingArea" class="form-control" id="thinkingArea"></textarea>
                     </div>
-                    <button type="button" class="btn btn-default" id="publishBtn"> Publish!</button>
+                    <button type="button" class="btn btn-default" id="publishBtn"> Publish!</button> 
                 </form>
+</br>
+
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">register a problem</button>
+  
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">register a problem</h4>
+        </div>
+        <div class="modal-body">
+           <form role="form">
+  <div class="form-group">
+     <label for="sel1">desired solution</label>
+  <select class="form-control" id="sel1">
+    <option>C</option>
+    <option>C++</option>
+    <option>Java</option>
+    <option>Python</option>
+  </select>
+   <div class="form-group">
+    <label for="nome">Username:</label>
+    <input type="nome" class="form-control" id="email">
+  </div>
+
+ <div class="form-group">
+  <label for="comment">Write the problem you want solution:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span>Submit</button>
+</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
                 
                 <br/>
                 <div id="thinkingsList"></div>
