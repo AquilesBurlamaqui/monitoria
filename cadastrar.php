@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<?php
-		$con = mysql_connect("localhost", "bdweb", "bdweb2016");
+		$con = mysql_connect("69.60.115.37", "bdweb", "bdweb2016");
 		if (!$con) {
 			//se der erro exibe msg
 			die('Could not connect: ' . mysql_error());
@@ -13,7 +13,7 @@
 		//seleciona o banco
 		mysql_select_db("web1", $con);
 		//executa a query
-		$sql = "INSERT INTO usuario (email, senha ) VALUES ('$_POST[email]', '$_POST[senha]')";
+		$sql = "INSERT INTO monitoria.usuario (email, senha ) VALUES ('$_POST[email]', '$_POST[senha]')";
 		if (!mysql_query($sql, $con)) {
 			die('Error: ' . mysql_error());
 		}
