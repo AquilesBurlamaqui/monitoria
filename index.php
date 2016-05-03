@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>A Monitoria</title>
-<meta charset="UTF-8">
+<title>Monitoria</title>
+<meta charset="latin-1">
 </head>
 <body>
 

@@ -1,5 +1,15 @@
-<?php
-   echo "testando ".5+4;
-   echo "nome:".$_POST["name"];
-   echo "e-mail:".$_POST["email"];
-?>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+          Cadastrar
+      </title>	
+   </head>
+   <body>
+       Cadastrando...</br>
+	<?php
+		echo "Nome: ".$_POST["name"]."</br>";
+		echo "e-mail: ".$_POST["email"]."</br>";
+	?>
+   </body>
+</html>
