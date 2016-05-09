@@ -8,38 +8,66 @@
 <meta charset="latin-1">
 </head>
 <body>
-<div class="container">
-<h2>Usuários</h2>
-<?php
-session_start();
-   if($_SESSION["login"]) { 
-	// Connecting, selecting database
-	$dbconn = pg_connect("host=localhost dbname=bdweb user=bdweb password=bdweb2016")
-    	or die('Could not connect: ' . pg_last_error());
+  <!-- Menu de navegação -->
+  <header>
+    <?php
+      include("menu.php");
+    ?>
+  </header>
 
-	// Performing SQL query
-	$query = 'SELECT * FROM monitoria.usuario';
-	$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+  <!-- Conteúdo -->
+  <div class="jumbotron">
+      <div class="container">
+        <h1>Usuários</h1>
+        <p>Conheça abaixo os usuários no sistema Monitorando</p>
+      </div>
+  </div>
+  <div class="container">
+  <?php
+  session_start();
+     if($_SESSION["login"]) {
+  	// Connecting, selecting database
+  	$dbconn = pg_connect("host=localhost dbname=bdweb user=bdweb password=bdweb2016")
+      	or die('Could not connect: ' . pg_last_error());
 
-	// Printing results in HTML
-	echo "<table>\n";
-	while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-    		echo "\t<tr>\n";
-    		foreach ($line as $col_value) {
-        		echo "\t\t<td>$col_value</td>\n";
-    		}
-    	echo "\t</tr>\n";
-   }
-   echo "</table>\n";
+  	// Performing SQL query
+  	$query = 'SELECT * FROM monitoria.usuario';
+  	$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-   // Free resultset
-   pg_free_result($result);
+  	// Printing results in HTML
+  	echo '<table class="table">';
+      echo '
+      <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+              </tr>
+            </thead>
+    ';
+  	while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+      		echo "\t<tr>\n";
+      		foreach ($line as $col_value) {
+          		echo "\t\t<td>$col_value</td>\n";
+      		}
+      	echo "\t</tr>\n";
+     }
+     echo "</table>\n";
 
-   // Closing connection
-   pg_close($dbconn);
-}else {
-  echo "Usuário não logado"; 
-} 
-?>
-</div>
+     // Free resultset
+     pg_free_result($result);
+
+     // Closing connection
+     pg_close($dbconn);
+  }else {
+    echo "Usuário não logado";
+  }
+  ?>
+
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
