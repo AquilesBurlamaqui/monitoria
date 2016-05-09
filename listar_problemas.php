@@ -60,7 +60,10 @@
       ';
     	while ($line = pg_fetch_row($result)) {
                 echo "<tr>";
-                echo "<td>".$line[0]."</td><td><a href='detalhe_problema.php?problema_id=".$line[0]."'>".$line[1]."</a></td><td>".getUser($line[2])."</td>";
+                echo "
+                <td>".$line[0]."</td>
+                <td><a href='detalhe_problema.php?problema_id=".$line[0]."'>".$line[1]."</a></td>
+                <td>".getUser($line[2])."</td>";
                 echo "</tr>";
     	}
             echo "</table>";
