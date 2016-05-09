@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Monitoria</title>
-<meta charset="utf-8">
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<meta charset="latin-1">
+  <title>Monitoria</title>
+  <meta charset="utf-8">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8">
 </head>
 <body>
 
@@ -16,7 +16,6 @@
     ?>
   </header>
 
-  <!-- Conteúdo -->
   <!-- Conteúdo -->
   <div class="jumbotron">
       <div class="container">
