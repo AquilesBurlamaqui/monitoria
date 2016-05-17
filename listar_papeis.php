@@ -21,6 +21,7 @@ session_start();
     	$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
     	// Printing results in HTML
+      echo "<h1>Lista de Papeis</h1>";
       echo "<table>";
     	while ($line = pg_fetch_row($result)) {
                 echo "<tr>";
