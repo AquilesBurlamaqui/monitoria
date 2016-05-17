@@ -10,9 +10,11 @@
 	   //Inicia a sessão
 	   session_start();
 
-	   if($_SESSION["login"]!=true) 
+	   if($_SESSION["login"]!=true) {
 	      echo "<h1>Usuário não logado</h1>";
-	   else {
+
+	      echo "<a href='index.php'>Logar</a>";
+	   } else {
 			?>
 			<h1>Esta é a página do nosso sistema de monitoria</h1>
 			<p>Bem vindo, <?php echo $_SESSION["nome"]?></p>
