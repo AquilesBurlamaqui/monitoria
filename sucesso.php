@@ -20,6 +20,7 @@
 			<a href="listar_usuarios.php">Listar Usuário</a>
 			<a href="listar_problemas.php">Listar Problemas</a>
 			<a href="form_problema.php">Cadastrar Problema</a>
+			<a href="form_papel.php">Cadastrar Papel</a>
 			<a href="logout.php">Logout</a>
 			<?php
 	   }
