@@ -24,7 +24,7 @@ session_start();
       echo "<table>";
     	while ($line = pg_fetch_row($result)) {
                 echo "<tr>";
-                echo "<td>".$line[0]."</td><td><a href='remover_papel.php?papel_id=".$line[0]."'>".$line[1]."</a></td>";
+                echo "<td>".$line[0]."</td><td>".$line[1]."</td><td><a href='remover_papel.php?papel_id=".$line[0]."</a></td>";
                 echo "</tr>";
     	}
        echo "</table>";
