@@ -14,39 +14,6 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-		     $('#myModal').click(function(){
-			$('#myModalDois').fadeIn('fast',1);
-			});			
-		
-		});
-
-		
-
-
-	</script>
-
-	<script type="text/javascript">
-			 $(function(){
-				$('.formulario').submit(function(){
-					$.ajax({
-						url: 'cadastrar_problema.php',
-						type: 'POST',
-						data: $('.formulario').serialize(),
-						success: function(data){}
-						
-						});
-					
-					
-					return false;
-					});
-		});
-	</script>
-
-
-
 </head>
 <body>
 <div class ="container">
@@ -80,11 +47,11 @@
         </div>
         <div class="modal-body">
 	 
-	<form id="formulario" method="POST" action="">
+	<form method="POST" action="">
         	  Definição:</br>
           	<textarea name="definicao" rows="20" cols="40">
          	 </textarea>
-         	 <input type="submit" class = "btn btn-success" value="submit"/>
+         	 <input type="submit" value="submit"/>
 	 </form>
 
 

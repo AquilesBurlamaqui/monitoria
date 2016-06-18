@@ -15,11 +15,11 @@ if (pg_num_rows($verifica)>0) {
                 $_SESSION["id_user"]=$line[0];
         	$_SESSION["nome"]=$line[1];
 	} 
-        $redirect = "http://69.60.115.37/~athos/monitoria/sucesso.php";
+        $redirect = "http://69.60.115.37/~allanbw/login/monitoria/sucesso.php";
         header("location:$redirect");
 }
 else{
-        $redirect = "http://69.60.115.37/~athos/monitoria/index.php";
+        $redirect = "http://69.60.115.37/~allanbw/login/monitoria/index.php";
         echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='index.php';</script>";
                     die();
         header("location:$redirect");
